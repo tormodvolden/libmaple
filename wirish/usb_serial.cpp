@@ -218,6 +218,7 @@ static void rxHook(unsigned hook, void *ignored) {
 
             // Got the magic sequence -> reset, presumably into the bootloader.
             // Return address is wait_reset, but we must set the thumb bit.
+            *((uint32 *) MAGIC_RESET_ADDRESS) = (uint32) MAGIC_RESET_VALUE;
             uintptr_t target = (uintptr_t)wait_reset | 0x1;
             asm volatile("mov r0, %[stack_top]      \n\t" // Reset stack
                          "mov sp, r0                \n\t"

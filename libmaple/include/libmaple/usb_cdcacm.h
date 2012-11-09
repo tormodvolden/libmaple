@@ -53,6 +53,12 @@ extern "C" {
 #define USB_CDCACM_CONTROL_LINE_DTR       (0x01)
 #define USB_CDCACM_CONTROL_LINE_RTS       (0x02)
 
+/* These are used to signal the bootloader that the reset was initiated
+   by the DTR negative edge + "1EAF" sequence from the IDE.
+   They must have the same values in the bootloader code hardware.h */
+#define MAGIC_RESET_ADDRESS 0x20004E00
+#define MAGIC_RESET_VALUE 0xFAB1FAB1
+
 /*
  * Descriptors, etc.
  */
